@@ -24,7 +24,10 @@ body.cat-ready .secret-toggle::after{content:""!important;position:absolute!impo
 body.cat-ready .hero .eye::after{width:6px!important;height:42px!important}
 body.cat-ready .secret-toggle::after{width:4px!important;height:22px!important}
 </style></head>`);
-    source=source.replace('</body>','<script>document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("#secretToggle,#tearToggle");if(b)window.scrollTo(0,0)},true);<\/script><script src="https://kanatama0416-glitch.github.io/person1-shiten/intro-control.js?v=20260916"><\/script><script src="https://kanatama0416-glitch.github.io/person1-shiten/eye-attract.js?v=20260916-stable"><\/script><script src="https://kanatama0416-glitch.github.io/person1-shiten/tease-overrides.js?v=42d0b943"><\/script></body>');
+    const close='</'+'script>';
+    const intro='<script>(function(){var i=document.getElementById("intro");if(!i||!document.body.classList.contains("intro-lock"))return;var n=Date.now(),r=false;try{var l=parseInt(localStorage.getItem("shiten-intro-last-seen-v3")||"0",10)||0;r=l>0&&(n-l)<1800000;localStorage.setItem("shiten-intro-last-seen-v3",String(n))}catch(e){}var d=r?650:1700,f=Math.max(120,d-280),p=document.querySelector(".page");function x(){[i,p,document.getElementById("introEye"),document.getElementById("introBrand"),document.getElementById("introRays")].forEach(function(e){if(e&&e.getAnimations)e.getAnimations().forEach(function(a){try{a.cancel()}catch(_){}})});document.body.classList.remove("intro-lock");if(p){p.style.opacity="1";p.style.filter="none"}if(i&&i.isConnected)i.remove();document.dispatchEvent(new CustomEvent("shiten:intro-end"))}i.style.transition="opacity .28s ease";setTimeout(function(){if(i&&i.isConnected)i.style.opacity="0"},f);setTimeout(x,d)})();'+close;
+    const click='<script>document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("#secretToggle,#tearToggle");if(b)window.scrollTo(0,0)},true);'+close;
+    source=source.replace('</body>',click+intro+'<script src="https://kanatama0416-glitch.github.io/person1-shiten/eye-attract.js?v=20260916-stable">'+close+'<script src="https://kanatama0416-glitch.github.io/person1-shiten/tease-overrides.js?v=42d0b943">'+close+'</body>');
     document.open();document.write(source);document.close();
   }catch(e){
     console.error(e);
