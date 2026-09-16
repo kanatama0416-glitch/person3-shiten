@@ -12,6 +12,58 @@
 (async()=>{
   try{
     let source=await(await fetch('https://raw.githubusercontent.com/kanatama0416-glitch/person3-shiten/271d3eddeec11d2f6c6cd896c74db8d775aacecd/index.html',{cache:'no-store'})).text();
+    source=source.replace('</head>',`<style>
+/* 03 cat-eye visual fix only: remove all visible white inside the cat eyes. */
+body.cat-ready .hero .eye{
+  background:var(--p)!important;
+}
+body.cat-ready .hero .iris{
+  width:100%!important;
+  height:100%!important;
+  left:0!important;
+  top:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  transform:none!important;
+  animation:none!important;
+}
+body.cat-ready .hero .iris:after{
+  width:6px!important;
+  height:42px!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  border-radius:999px!important;
+  background:#111!important;
+  box-shadow:none!important;
+}
+body.cat-ready .secret-toggle{
+  background:var(--p)!important;
+  overflow:hidden!important;
+}
+body.cat-ready .secret-iris{
+  width:100%!important;
+  height:100%!important;
+  left:0!important;
+  top:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  transform:none!important;
+  animation:none!important;
+}
+body.cat-ready .secret-iris:after{
+  width:4px!important;
+  height:22px!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  border-radius:999px!important;
+  background:#111!important;
+  box-shadow:none!important;
+}
+</style></head>`);
     source=source.replace('</body>','<script>document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("#secretToggle,#tearToggle");if(b)window.scrollTo(0,0)},true);<\/script></body>');
     document.open();document.write(source);document.close();
   }catch(e){
