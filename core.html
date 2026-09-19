@@ -78,8 +78,16 @@ const secretToggle=document.getElementById('secretToggle');if(secretToggle){/* P
   const timers=new Set();
   const later=(fn,delay)=>{const id=setTimeout(()=>{timers.delete(id);fn()},delay);timers.add(id)};
   const clearTrail=()=>{timers.forEach(clearTimeout);timers.clear();layer.replaceChildren()};
+  const goTop=()=>{
+    const scroller=document.scrollingElement||document.documentElement;
+    scroller.scrollTop=0;
+    document.documentElement.scrollTop=0;
+    document.body.scrollTop=0;
+    window.scrollTo(0,0);
+  };
   button.setAttribute('aria-label','猫の目に切り替える');
   button.addEventListener('click',()=>{
+    goTop();
     enabled=!enabled;clearTimeout(nightTimer);clearTrail();
     document.body.classList.toggle('cat-ready',enabled);
     button.setAttribute('aria-pressed',String(enabled));
