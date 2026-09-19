@@ -32,7 +32,7 @@ body.cat-ready .hero .eye::after{width:6px!important;height:42px!important}
 body.cat-ready .secret-toggle::after{width:4px!important;height:22px!important}
 </style></head>`);
     source=source.replace('</body>','<script>document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("#secretToggle,#tearToggle");if(b)window.scrollTo(0,0)},true);<\\/script><script src="https://kanatama0416-glitch.github.io/person1-shiten/eye-attract.js?v=20260916-stable"><\\/script><script src="https://kanatama0416-glitch.github.io/person1-shiten/tease-overrides.js?v=42d0b943"><\\/script></body>');
-    source=source.replace('</head>',"<style id=\"opaque-eye-gimmick\">#secretToggle,#tearToggle,.secret-toggle,.p4-eye-toggle{opacity:1!important;filter:none!important}</style></head>");
+    source=source.replace('</head>',"<style id=\"opaque-eye-gimmick\">#secretToggle,#tearToggle,.secret-toggle,.p4-eye-toggle{opacity:1!important}</style></head>");
     document.open();document.write(source);document.close();
   }catch(e){
     console.error(e);
